@@ -1,0 +1,6 @@
+# venv
+venv-sample/
+
+# python cache
+*.pyc
+__pycache__/
