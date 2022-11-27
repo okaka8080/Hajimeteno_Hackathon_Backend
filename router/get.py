@@ -23,7 +23,7 @@ async def get_all_user(db: Session = Depends(get_db)):
 
 @router.get('/allcal/{id}', response_model= List[Calender_View])
 def get_all_plans(id:str, db: Session = Depends(get_db)):
-    return db.query(Calendar).filter(Calendar.user_id == id).all
+    return db.query(Calendar).filter(Calendar.user_id == id).all()
 
 @router.get('/{id}', response_model= Calender_View)
 def get_plan(id: str,  db: Session = Depends(get_db)):
