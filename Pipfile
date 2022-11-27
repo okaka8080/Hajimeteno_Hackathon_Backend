@@ -12,8 +12,10 @@ psycopg2 = "*"
 numpy = "*"
 opencv-python = "*"
 opencv-contrib-python = "*"
-torch = "*"
 scikit-learn = "*"
+python-multipart = "*"
+torch = {version="==1.13.0",file = "https://download.pytorch.org/whl/cpu/torch-1.13.0%2Bcpu-cp38-cp38-linux_x86_64.whl"}
+cloudinary = "*"
 
 [dev-packages]
 

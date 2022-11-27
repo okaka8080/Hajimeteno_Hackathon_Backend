@@ -1,22 +1,25 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from router import get, post, calender
+from fastapi.middleware.cors import CORSMiddleware
 from db.models import Base
 from db.database import engine
 
-from OcrClient import OcrClient
+app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
 
-class Data(BaseModel):
-    id: str
-    date: str
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-app = FastAPI()
-@app.get("/")
-def hello():
-    return("hello world")
+app.include_router(get.router)
+app.include_router(post.router)
+app.include_router(calender.router)
 
-@app.post("/result/{imagepath}")
-def analyze(imagepath:str):
-    ocr_text = OcrClient.search(img = imagepath)
-    return ocr_text
+@app.get('/hello')
+def index():
+    return 'Hello World'

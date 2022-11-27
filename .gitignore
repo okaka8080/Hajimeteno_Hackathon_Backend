@@ -4,3 +4,4 @@ venv-sample/
 # python cache
 *.pyc
 __pycache__/
+.env
